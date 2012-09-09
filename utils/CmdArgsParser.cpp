@@ -80,8 +80,7 @@ const std::string CmdArgsParser::operator[](const std::string& name) const
   for(i = 0; i < m_usedParams.size(); i++)
     if (m_usedParams[i].name == name)
       break;
-  assert(i < m_usedParams.size());
-  assert( && m_usedParams[i].hasValue);
+  assert(i < m_usedParams.size() && m_usedParams[i].hasValue);
   return m_usedParams[i].value;
 }
 
