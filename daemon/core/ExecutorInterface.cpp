@@ -166,7 +166,7 @@ void ExecutorInterface::runExecutor()
       dup2(pp[0], STDIN_FILENO);
       dup2(m_outputPipe[1], STDOUT_FILENO);
       dup2(m_errorPipe[1], STDERR_FILENO);
-      if (execlp(SHELL, SHELL, "-c", m_executorName.c_str(), (char *)NULL) == -1)
+      if (execlp(SHELL, SHELL, "-c", m_executorName.c_str(), (char*)0) == -1)
 	exit(EXIT_FAILURE);
     } // child process;
   close(pp[0]);

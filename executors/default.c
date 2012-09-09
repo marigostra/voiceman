@@ -502,9 +502,9 @@ char processInputCommand(int fd)
       maxQueueSize = header.param1;
       return 1;
     } /*COMMAND_SET_QUEUE_LIMIT*/
-  fprintf(stderr, "%s unknown command %X(%lu,%lu,%lu)\n", ERROR_PREFIX,
-	  header.code, (unsigned long)header.param1,
-	  (unsigned long)header.param2, (unsigned long)header.param3);
+  fprintf(stderr, "%s unknown command %X(%zu,%zu,%zu)\n", ERROR_PREFIX,
+	  header.code, header.param1,
+	  header.param2, header.param3);
   fflush(stderr);
   return 1;
 }

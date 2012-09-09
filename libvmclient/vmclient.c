@@ -270,7 +270,7 @@ vm_result_t vm_tone(vm_connection_t con, size_t freq, size_t lengthms)
   assert(con != VOICEMAN_BAD_CONNECTION);
   if (con == VOICEMAN_BAD_CONNECTION)
     return VOICEMAN_ERROR;
-  sprintf(buf, "B:%lu:%lu\n", (unsigned long)freq, (unsigned long)lengthms);
+  sprintf(buf, "B:%zu:%zu\n", freq, lengthms);
   if (writebuf(con, buf, strlen(buf)) == -1)
     return VOICEMAN_ERROR;
   return VOICEMAN_OK;

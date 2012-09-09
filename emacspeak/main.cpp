@@ -13,6 +13,7 @@
    General Public License for more details.
 */
 
+#include <unistd.h>
 #include"emacspeak.h"
 #include"LineParser.h"
 

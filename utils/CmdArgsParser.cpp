@@ -76,14 +76,13 @@ bool CmdArgsParser::used(const std::string& name) const
 const std::string CmdArgsParser::operator[](const std::string& name) const
 {
   assert(used(name));
-  for(UsedParamVector::size_type i = 0;i < m_usedParams.size();i++)
-    {
-      if (m_usedParams[i].name != name)
-	continue;
-      assert(m_usedParams[i].hasValue);
-      return m_usedParams[i].value;
-    }
-  assert(false);
+  UsedParamVector::size_type i;
+  for(i = 0; i < m_usedParams.size(); i++)
+    if (m_usedParams[i].name == name)
+      break;
+  assert(i < m_usedParams.size());
+  assert( && m_usedParams[i].hasValue);
+  return m_usedParams[i].value;
 }
 
 /*

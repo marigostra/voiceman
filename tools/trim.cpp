@@ -17,6 +17,7 @@
 #include<iostream>
 #include<string>
 #include<stdlib.h>
+#include <unistd.h>
 
 #define INPUT_STREAM 0
 #define OUTPUT_STREAM 1

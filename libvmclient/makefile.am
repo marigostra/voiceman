@@ -1,5 +1,5 @@
 
-AM_CFLAGS = $(VOICEMAN_CFLAGS) $(VOICEMAN_INCLUDES)
+AM_CFLAGS = $(VOICEMAN_CFLAGS) $(VOICEMAN_INCLUDES) -std=gnu99
 
 noinst_HEADERS = vmclient.h
 noinst_LIBRARIES = libvmclient.a
