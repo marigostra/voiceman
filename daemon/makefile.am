@@ -1,0 +1,7 @@
+
+SUBDIRS = \
+config_file  \
+core  \
+langs  \
+system \
+main  

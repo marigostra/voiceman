@@ -1,0 +1,70 @@
+# voiceman.conf: Main configuration file for VoiceMan speech service.
+# NOTE: This file must be encoded in UTF-8.
+
+# General global attributes;
+[Global]
+
+# Uncomment the following line if you want TCP/IP connections:
+#inet socket port = @default_port@
+
+# The UNIX domain socket file name to accept connections with:
+socket = "@default_socket@"
+
+# Desired log level (can be 'fatal', 'error', 'warn', 'info' or 'debug'):
+log level = info
+
+# Language used by default:
+default language = eng
+
+# Additional character and language associations;
+[characters]
+# Characters to be spoken with the same language as precedent text:
+default = "0123456789.,;:_-+=[]&<>""'/\|?~`!@#$%^*(){}"
+
+# Output to voice families associations;
+[families]
+espeak = espeak
+espeak-ru = espeak
+
+# Espeak TTS settings for English language;
+[output]
+name = espeak
+type = command
+lang = eng
+synth command = "espeak --stdout -p %p -s %r -a %v | voiceman-trim --words"
+alsa player command = "aplay -t raw -f s8 -c 1 -r 22500"
+replacements = replacements.espeak
+pitch num digits after dot = 0
+pitch min = 1
+pitch aver = 30
+pitch max = 199
+rate num digits after dot = 0
+rate min = 200
+rate aver = 160
+rate max = 1
+volume num digits after dot = 0
+volume min = 0
+volume aver = 100
+volume max = 150
+cap list = "a eigh b bee c see d dee e ee f ef g gee h eighch i ei j jay k kay l el m em n en o oh p pee q quu r ar s es t tee u ou v vee w doubloo x ecs y why z zet"
+
+# Espeak TTS settings for Russian language;
+[output]
+name = espeak-ru
+type = command
+lang = rus
+synth command = "espeak -v ru --stdout -p %p -s %r -a %v | voiceman-trim --words"
+alsa player command = "aplay -t raw -f s8 -c 1 -r 22500"
+replacements = replacements.espeak
+pitch num digits after dot = 0
+pitch min = 1
+pitch aver = 30
+pitch max = 199
+rate num digits after dot = 0
+rate min = 200
+rate aver = 160
+rate max = 1
+volume num digits after dot = 0
+volume min = 0
+volume aver = 100
+volume max = 150

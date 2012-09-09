@@ -1,0 +1,7 @@
+
+AM_CFLAGS = $(VOICEMAN_CFLAGS) $(VOICEMAN_INCLUDES)
+
+noinst_HEADERS = vmclient.h
+noinst_LIBRARIES = libvmclient.a
+
+libvmclient_a_SOURCES = vmclient.c

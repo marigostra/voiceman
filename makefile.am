@@ -1,0 +1,29 @@
+SUBDIRS =  \
+utils  \
+daemon  \
+executors   \
+libvmclient \
+shell \
+emacspeak \
+tools
+
+sysconf_DATA = voiceman.conf
+dist_pkgdata_DATA = \
+data/caps \
+data/chars-table \
+data/replacements.all \
+data/replacements.none \
+data/replacements.some \
+data/replacements.espeak \
+data/replacements.mbrola \
+data/replacements.ru_tts \
+data/ru_const
+
+install-data-local:
+	$(INSTALL) -pD -m 755 scripts/voiceman-reload $(DESTDIR)$(bindir)/voiceman-reload
+
+distclean-local:
+	-rm -rf autom4te.cache
+	-rm -f doxygen.log
+
+ACLOCAL_AMFLAGS = -I m4

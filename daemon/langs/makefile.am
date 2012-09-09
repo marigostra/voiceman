@@ -1,0 +1,12 @@
+
+AM_CXXFLAGS = $(VOICEMAN_DAEMON_CXXFLAGS) $(VOICEMAN_DAEMON_INCLUDES)
+
+noinst_LIBRARIES = liblangs.a
+
+liblangs_a_SOURCES = \
+EngLang.cpp \
+EngLang.h \
+LangManager.cpp \
+LangManager.h \
+RusLang.cpp \
+RusLang.h 

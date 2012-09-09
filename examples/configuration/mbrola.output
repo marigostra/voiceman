@@ -1,0 +1,9 @@
+[output]
+type="command"
+name="eng_output"
+lang="eng"
+command="freephone -h /usr/share/freespeech/lexicon -m | mbrola -v %v -f %p -t %r /usr/share/mbrola/en1/en1 - - | vmtrim --words | sox -t raw -r 16000 -w -c 1 -s - -t ossdsp -v %v /dev/dsp"
+rate="2:0.3:1.8"
+pitch="2:0.2:1.8"
+volume="2:0:3"
+

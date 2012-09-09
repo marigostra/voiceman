@@ -1,0 +1,11 @@
+1.5.0:
+- Added hot configuration reloading;
+- TTS switching inside of one connection;
+- More efficient TTS execution mechanism;
+- A lot of minor changes.
+
+1.2.0:
+- Added proper speech pitch processing for emacspeak client;
+- Added collecting config file parts from .d directory;
+- Added --stop command to shell client;
+- License changed to GPL v3;

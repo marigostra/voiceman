@@ -1,0 +1,28 @@
+# Text processing patches for freephone + mbrola speech synthesizer;
+
+.:,
+!:,
+?:,
+`:,
+~:,
+@:,
+#:,
+$:,
+%:,
+^:,
+&:,
+*:,
+_:,
+=:,
++:,
+<:,
+>:,
+\:,
+|:,
+"""":,
+/:,
+makefile:make file
+newline:new line
+postgresql:post gres ql
+postgres:post gres
+bytes:bites

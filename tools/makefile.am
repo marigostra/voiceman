@@ -1,0 +1,7 @@
+
+AM_CXXFLAGS = $(VOICEMAN_CXXFLAGS) $(VOICEMAN_INCLUDES)
+
+bin_PROGRAMS = voiceman-trim
+
+voiceman_trim_SOURCES = \
+trim.cpp

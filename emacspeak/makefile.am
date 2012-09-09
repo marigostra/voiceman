@@ -1,0 +1,17 @@
+
+AM_CXXFLAGS = $(VOICEMAN_CXXFLAGS) $(VOICEMAN_INCLUDES) -I$(top_srcdir)/libvmclient
+
+bin_PROGRAMS = voiceman-emacspeak
+
+voiceman_emacspeak_LDADD = \
+$(top_srcdir)/utils/libutils.a \
+$(top_srcdir)/libvmclient/libvmclient.a
+voiceman_emacspeak_DEPENDENCIES = $(voiceman_emacspeak_LDADD)
+
+voiceman_emacspeak_SOURCES=\
+Connection.cpp \
+Connection.h \
+emacspeak.h \
+LineParser.cpp \
+LineParser.h \
+main.cpp

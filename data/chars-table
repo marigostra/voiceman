@@ -1,0 +1,53 @@
+# Deigits:
+0:zero
+1:one
+2:two
+3:three
+4:four
+5:five
+6:six
+7:seven
+8:eight
+9:nine
+
+# Symbols:
+.:dot
+,:coma
+;:semicolon
+_:under line
+-:dash
++:plus
+=:equals
+[:left bracket
+]:right bracket
+&:and
+<:less than
+>:greater than
+"""":quote
+':apos
+/:slash
+\:back slash
+|:bar
+?:question
+~:tilde
+`:groff
+!:exclaim
+@:at
+"#":sharp
+$:dollar
+%:percent
+^:caret
+*:star
+(:left parent
+):right parent
+{:left brace
+}:right brace
+":":colon
+
+# Some russian letters:
+ъ:твёрдый знак
+Ъ:твёрдый знак
+ь:мягкий знак
+Ь:мягкий знак
+й:и краткое
+Й:и краткое

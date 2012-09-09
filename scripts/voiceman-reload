@@ -1,0 +1,35 @@
+#!/bin/sh -e
+# Sends a signal to VoiceMan daemon with notification to reload its configuration;
+# Michael Pozhidaev <msp@altlinux.org>
+
+THIS="${0##*/}"
+
+if [ -z "$1" ] || [ "$1" == '--help' ] || [ "$1" == '-h' ]; then
+    cat <<EOF
+$THIS: The utility to reload configuration of VoiceMan daemon
+
+Usage:
+    $THIS [--help] [PID_FILE_NAME]
+
+Options:
+    --help - print this help screen and exit;
+    PID_FILE_NAME - the file name to get pid of launched voicemand (see 'voicemand --help' for more information).
+EOF
+    exit 0
+fi
+
+PID_FILE_NAME="$1"
+
+if ! [ -r "$PID_FILE_NAME" ]; then
+    echo "$THIS:$PID_FILE_NAME:file is not accessible to read" >&2
+    exit 1
+fi
+
+PID="$(cat "$PID_FILE_NAME")"
+
+if [ -z "$PID" ]; then
+    echo "$THIS:$PID_FILE_NAME:file is empty" >&2
+    exit 1
+fi
+
+/bin/kill -HUP "$PID"

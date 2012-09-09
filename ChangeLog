@@ -1,0 +1,37 @@
+VoiceMan change log!
+
+Version: 1.5.0.1 (2011-05-17).
+	* Fixed bug with processing pitch values in emacspeak client.
+	* Fixed bug with processing multiple lines in executor output.
+
+Version: 1.5.0 (2010-09-29).
+	* A lot of changes in documentation required for release.
+
+Version: 1.5.0pre4 (2010-06-28).
+	* A lot of minor fixes before release; last beta version;
+
+Version: 1.5.0pre3 (2010-06-07).
+	* Added new emacspeak client implementation;
+
+Version: 1.5.0pre2 (2010-05-06).
+	* Fixed three race conditions in default executor;
+	* Activated tones;
+	* Implemented executor auto respawn on its unexpected death;
+
+Version: 1.5.0pre1 (2010-04-29).
+	* Almost complete redisign with huge number of changes for implementing new features of 1.5.0;
+
+Version: 1.2.0.
+	* Fixed different parameters in building system (Dmitri Paduchikh);
+	* Added proper speech pitch processing to emacspeak client;
+	* Added config file parts from .d directory 
+	 (name constructs from config file name by replacing extension with .d)
+	* Added --stop command to shell client;
+	* Fixed a lot of places to avoid compiler warnings with -Wall;
+	* License changed to GPL v3;
+
+Version: 1.1.0.
+	* Added default speech parameters specifications;
+	* Set proper default values for parameters in the configuration file;
+	* Removed boost dependences;
+	* removed log output from emacspeak client.

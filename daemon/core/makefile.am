@@ -1,0 +1,28 @@
+
+AM_CXXFLAGS = $(VOICEMAN_DAEMON_CXXFLAGS) $(VOICEMAN_DAEMON_INCLUDES)
+
+noinst_LIBRARIES = libcore.a
+
+libcore_a_SOURCES = \
+AbstractExecutorOutput.h \
+AbstractTextProcessor.h \
+ClientFactory.h \
+Client.h \
+core.h \
+ExecutorInterface.cpp \
+ExecutorInterface.h \
+Lang.h \
+MainLoop.cpp \
+MainLoop.h \
+Output.cpp \
+Output.h \
+OutputSet.cpp \
+OutputSet.h \
+TextItem.cpp \
+TextItem.h \
+TextParam.cpp \
+TextParam.h \
+TextProcessor.cpp \
+TextProcessor.h \
+VoicemanProtocol.cpp \
+VoicemanProtocol.h

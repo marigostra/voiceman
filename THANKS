@@ -1,0 +1,4 @@
+Guennadi Ivanov <gengriv@mail.wplus.net> for testing and comments;
+Dmitri Paduchikh <dpaduch@k66.ru> for useful patches and comments ;
+Anton Protopopov <aspsk2@gmail.com> for one found race condition;
+tolyangin <tolyangin@mail.ru> for very informative bug reports and required feature comments;

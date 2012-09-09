@@ -1,0 +1,8 @@
+
+AM_CXXFLAGS = $(VOICEMAN_CXXFLAGS) $(VOICEMAN_INCLUDES)
+
+noinst_LIBRARIES = libutils.a
+
+libutils_a_SOURCES = \
+CmdArgsParser.cpp \
+Transcoding.cpp

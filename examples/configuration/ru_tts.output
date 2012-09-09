@@ -1,0 +1,9 @@
+[output]
+type="command"
+name="rus_output"
+lang="rus"
+command="iconv -f utf-8 -t koi8-r | ru_tts -s /usr/share/ru_tts/lexicon -r %r -p %p -m | vmtrim | sox -t raw -r 10000 -s -b -c 1 - -t ossdsp -v %v /dev/dsp"
+rate="2:0:0.2"
+pitch="2:0:0.3"
+volume="2:0:3"
+cap list="б бэ в вэ к ка с эс"

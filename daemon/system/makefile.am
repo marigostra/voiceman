@@ -1,0 +1,14 @@
+
+AM_CXXFLAGS = $(VOICEMAN_DAEMON_CXXFLAGS) $(VOICEMAN_DAEMON_INCLUDES)
+
+noinst_LIBRARIES = libsystem.a
+
+libsystem_a_SOURCES = \
+files.cpp \
+files.h \
+logging.cpp \
+logging.h \
+sockets.cpp \
+sockets.h \
+SystemException.h \
+system.h

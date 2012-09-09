@@ -1,0 +1,37 @@
+# Dictionary for letter-by-letter processing.
+# NOTE: This file can contain only English letters.
+# Capital letters mark letters to be spoken separately.
+# Mark '+' means something else at the beginning or in the end of a word.
+
+Sbin
+CDrom
+CDrecord
+MKisoFS
+growisoFS
+IPtables
+KDE+
+Kmail
+Knode
+Kfloppy
++passWD
+cronD
+APM
+APMD
+APT
+ACPI
+ACPID
+postgresQL
+setQ
+Mplayer
+openSSL
+openSSH
+XinetD
+CHKconfig
+CDparanoia
+Rsync
+PCI+
++PCI
+NTPdate
+Href
+CPU
+GPU

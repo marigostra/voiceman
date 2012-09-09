@@ -1,0 +1,11 @@
+
+AM_CXXFLAGS = $(VOICEMAN_DAEMON_CXXFLAGS) $(VOICEMAN_DAEMON_INCLUDES)
+
+noinst_LIBRARIES = libconfigfile.a
+
+libconfigfile_a_SOURCES = \
+ConfigFile.cpp \
+ConfigFileException.h \
+ConfigFile.h \
+ConfigFileSection.h \
+ConfigFileValueTypeException.h

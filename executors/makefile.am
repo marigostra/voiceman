@@ -1,0 +1,10 @@
+
+AM_CFLAGS = $(VOICEMAN_CFLAGS) $(AO_CFLAGS) $(VOICEMAN_INCLUDES)
+
+bin_PROGRAMS=voiceman-executor
+
+voiceman_executor_LDADD = -lao -lm
+
+voiceman_executor_SOURCES = \
+tone.c \
+default.c 

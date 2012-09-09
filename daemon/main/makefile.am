@@ -1,0 +1,21 @@
+
+AM_CXXFLAGS = $(VOICEMAN_DAEMON_CXXFLAGS) $(VOICEMAN_DAEMON_INCLUDES)
+
+bin_PROGRAMS=voicemand
+
+voicemand_LDADD = \
+../config_file/libconfigfile.a \
+../langs/liblangs.a \
+../core/libcore.a \
+../system/libsystem.a \
+$(top_srcdir)/utils/libutils.a
+
+voicemand_DEPENDENCIES = $(voicemand_LDADD)
+
+voicemand_SOURCES = \
+configuration.cpp \
+ConfigurationException.h \
+configuration.h \
+DelimitedFile.cpp \
+DelimitedFile.h \
+main.cpp
