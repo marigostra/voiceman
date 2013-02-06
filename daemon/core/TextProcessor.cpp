@@ -70,8 +70,6 @@ void TextProcessor::split(const std::wstring& text, TextItemList& items) const
 
 void TextProcessor::processLetter(wchar_t c, TextParam volume, TextParam pitch, TextParam rate, TextItemList& items) const
 {
-  TextParam faster = rate;
-  faster -= 10;
   LangId langId = LANG_ID_NONE;
   WCharToLangIdMap::const_iterator it = m_charsTable.find(c);
   if (it != m_charsTable.end())
@@ -84,7 +82,7 @@ void TextProcessor::processLetter(wchar_t c, TextParam volume, TextParam pitch, 
     {
       WCharToWStringMap::const_iterator specialValueIt=m_specialValues.find(c);
       if (specialValueIt != m_specialValues.end())
-	process(TextItem(specialValueIt->second, volume, pitch, faster), items);
+	process(TextItem(specialValueIt->second, volume, pitch, rate), items);
       return;
     }
   const Lang* lang = getLangById(langId);
@@ -94,12 +92,12 @@ void TextProcessor::processLetter(wchar_t c, TextParam volume, TextParam pitch, 
   WCharToWStringMap::const_iterator specialValueIt=m_specialValues.find(c);
   if (specialValueIt != m_specialValues.end())
     {
-      process(TextItem(specialValueIt->second, volume, p, faster), items);
+      process(TextItem(specialValueIt->second, volume, p, rate), items);
       return;
     }
   std::wstring s;
   s += c;
-  TextItem item(langId, s, volume, p, faster);
+  TextItem item(langId, s, volume, p, rate);
   item.mark(0);
   items.clear();
   items.push_back(item);

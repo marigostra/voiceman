@@ -175,7 +175,9 @@ void LineParser::tts_say(const std::string& s)
 	} //dectalk commands processing;
     } //while(s[i]);
   m_connection.stop();
+  m_connection.rate(0);
   m_connection.text(text);
+  m_connection.rate(m_rate);
 }
 
 void LineParser::tts_set_speech_rate(const std::string& s)

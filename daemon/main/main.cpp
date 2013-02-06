@@ -211,7 +211,7 @@ public:
     logMsg(LOG_DEBUG, "Processing \'LETTER\' command with processor \'%s\'", client.selectedTextProcessor.c_str());
     //Preparing text item to provide into text processor;
     TextItemList textItemList;
-    textProc->processLetter(c, client.volume, client.pitch, client.rate, textItemList);
+    textProc->processLetter(c, client.volume, client.pitch, 0, textItemList);
     logMsg(LOG_DEBUG, "Text processor generated %u text items", textItemList.size());
     //OK, now we have the set of splitted items, but output information is omitted in it, only language specifications;
     TextItemList preparedTextItems;
