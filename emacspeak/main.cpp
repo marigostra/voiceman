@@ -67,6 +67,7 @@ void splitEmacspeakLine(const std::string& str, EmacspeakLine& line)
 	  line.cmd.erase();
 	  toParams = 0;
 	}
+      next += ' ';
     } /*if (level != 0)*/ else
     {
       line.cmd.erase();
