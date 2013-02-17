@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2012 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or
@@ -49,10 +49,16 @@ class LineParser
 {
 public:
   LineParser()
-    : m_pitch(50), m_rate(50), m_volume(50), m_rateFraction(5), m_pitchShift(0) {}
+    : m_pitch(50),
+      m_rate(50),
+      m_volume(50),
+      m_rateFraction(5),
+      m_pitchShift(0),
+      m_ttsSayAtMinRate(0) {}
 
   virtual ~LineParser() {}
 
+public:
   void  processCommand(const std::string& command, const StringVector& parameters);
 
   void setFamily(const std::string& family)
@@ -69,6 +75,11 @@ public:
   void setPitchShift(int value)
   {
     m_pitchShift = value;
+  }
+
+  void setTtsSayAtMinRate()
+  {
+    m_ttsSayAtMinRate = 1;
   }
 
 private:
@@ -92,6 +103,7 @@ private:
   size_t m_pitch, m_rate, m_volume;
   size_t m_rateFraction;
   int m_pitchShift;
+  bool m_ttsSayAtMinRate;
 }; //class LineParser;
 
 #endif //__VOICEMAN_EMACSPEAK_LINE_PARSER_H__;

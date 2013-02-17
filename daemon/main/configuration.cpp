@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2012 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or
@@ -47,6 +47,7 @@ VOICEMAN_DECLARE_STRING_PARAM("global", "digitsmode");
 VOICEMAN_DECLARE_STRING_PARAM("global", "defaultlanguage");
 VOICEMAN_DECLARE_BOOLEAN_PARAM("global", "separation");
 VOICEMAN_DECLARE_BOOLEAN_PARAM("global", "capitalization");
+VOICEMAN_DECLARE_BOOLEAN_PARAM("global", "lettersatminrate");
 
 //output;
 VOICEMAN_DECLARE_STRING_PARAM("output", "name");
@@ -93,6 +94,7 @@ void initConfigData(Configuration& c)
   c.digitsMode = DigitsModeNormal;
   c.separation = 1;
   c.capitalization = 1;
+  c.lettersAtMinRate = 0;
   c.defaultLangId = LANG_ID_NONE;
   c.daemonMode = 0;
   c.pidFileName = "";
@@ -440,6 +442,8 @@ void prepareConfiguration(const LangManager& langs, const CmdArgsParser& cmdLine
     } //digits mode;
   if (global.has("capitalization"))
     c.capitalization = parseAsBool(global["capitalization"]);
+  if (global.has("lettersatminrate"))
+    c.lettersAtMinRate = parseAsBool(global["lettersatminrate"]);
   if (global.has("separation"))
     c.separation = parseAsBool(global["separation"]);
   if (global.has("defaultlanguage"))

@@ -1,5 +1,12 @@
 VoiceMan change log!
 
+Version: 1.5.0.3
+	* The patch by Dmitri Paduchikh  to reduce letters processing rate.
+	* The patch by Dmitri Paduchikh  to fix line breaks processing in emacspeak protocol.
+	* Configuration file parameter "letters at min rate in [Global]" section added.
+	* Environment variable $VOICEMAN_EMACSPEAK_TTS_SAY_AT_MIN_RATE for emacspeak client added.
+	* libao checking for ./configure script added.
+
 Version: 1.5.0.2 (2012-09-09).
 	* Patch by Dmitri Paduchikh applied to fix gcc-4.7 compilation.
 

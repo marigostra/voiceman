@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2012 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or
@@ -127,11 +127,16 @@ public:
 
   /**\brief The constructor
    *
-   * \param [in] outputSet The reference to used OutputSet object
-   * \param [in] executorInterface The reference to used ExecutorInterface object
+   * \param [in] outputSet A reference to used OutputSet object
+   * \param [in] executorInterface A reference to used ExecutorInterface object
+   * \param [in] lettersAtMinRate A flag to speak letters at maximum possible speed
    */
-  ProtocolHandler(const OutputSet& outputSet, ExecutorInterface& executorInterface)
-    : m_outputSet(outputSet), m_executorInterface(executorInterface) {}
+  ProtocolHandler(const OutputSet& outputSet,
+		  ExecutorInterface& executorInterface,
+bool lettersAtMinRate)
+    : m_outputSet(outputSet),
+      m_executorInterface(executorInterface),
+      m_lettersAtMinRate(lettersAtMinRate) {}
 
   /**\brief the destructor*/
   virtual ~ProtocolHandler() 
@@ -211,7 +216,7 @@ public:
     logMsg(LOG_DEBUG, "Processing \'LETTER\' command with processor \'%s\'", client.selectedTextProcessor.c_str());
     //Preparing text item to provide into text processor;
     TextItemList textItemList;
-    textProc->processLetter(c, client.volume, client.pitch, 0, textItemList);
+    textProc->processLetter(c, client.volume, client.pitch, m_lettersAtMinRate?0:client.rate, textItemList);
     logMsg(LOG_DEBUG, "Text processor generated %u text items", textItemList.size());
     //OK, now we have the set of splitted items, but output information is omitted in it, only language specifications;
     TextItemList preparedTextItems;
@@ -522,6 +527,7 @@ private:
   ExecutorInterface& m_executorInterface;
   StringToTextProcMap m_textProcessors;
   LangIdToStringMap m_defaultFamilies;
+  bool m_lettersAtMinRate;
 }; //class ProtocolHandler;
 
 /**\brief The general handler of signals to daemon process
@@ -717,7 +723,7 @@ public:
     fillOutputListByConfiguration(m_configuration.outputs, outputList);
     outputSet.reinit(outputList);
     logMsg(LOG_DEBUG, "Initializing protocol handler");
-    ProtocolHandler protocolHandler(outputSet, executorInterface);
+    ProtocolHandler protocolHandler(outputSet, executorInterface, m_configuration.lettersAtMinRate);
     logMsg(LOG_DEBUG, "Initializing text processing");
     protocolHandler.reinit(m_configuration);
     logMsg(LOG_DEBUG, "Text processing initialized");

@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2012 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or
@@ -225,11 +225,12 @@ void printHelp()
   std::cout << "\tvoiceman-emacspeak [--help]" << std::endl;
   std::cout << std::endl;
   std::cout << "Used environment variables:" << std::endl;
-    std::cout << "\t$VOICEMAN - specifies server location;" << std::endl;
-    std::cout << "\t$VOICEMAN_EMACSPEAK_FAMILY - sets default voice family for emacspeak connections;" << std::endl;
-    std::cout << "\t$VOICEMAN_EMACSPEAK_RATE_FRACTION - fraction to control rate value range (default is 5);" << std::endl;
-    std::cout << "\t$VOICEMAN_EMACSPEAK_RPITCH_SHIFT - the value to add to all pitch commands (default is 0);" << std::endl;
-    std::cout << "\t$VOICEMAN_EMACSPEAK_TRACE - sets file to save emacspeak data." << std::endl;
+    std::cout << "\t$VOICEMAN - specifies server location" << std::endl;
+    std::cout << "\t$VOICEMAN_EMACSPEAK_FAMILY - sets default voice family for emacspeak connections" << std::endl;
+    std::cout << "\t$VOICEMAN_EMACSPEAK_RATE_FRACTION - fraction to control rate value range (default is 5)" << std::endl;
+    std::cout << "\t$VOICEMAN_EMACSPEAK_RPITCH_SHIFT - the value to add to all pitch commands (default is 0)" << std::endl;
+    std::cout << "\t$VOICEMAN_EMACSPEAK_TRACE - sets file to save emacspeak data" << std::endl;
+    std::cout << "\t$VOICEMAN_EMACSPEAK_TTS_SAY_AT_MIN_RATE - processes tts_say command always at min rate, use values 0 or 1 (default is 0)" << std::endl;
       std::cout << std::endl;
       std::cout << "NOTE:Used protocol type: Dectalk." << std::endl;
 }
@@ -262,5 +263,8 @@ int main(int argc, char *argv[])
   const std::string pitchShift = trim(getEnv("VOICEMAN_EMACSPEAK_PITCH_SHIFT"));
   if (!pitchShift.empty() && checkTypeInt(pitchShift))
     parser.setPitchShift(parseAsInt(pitchShift));
+
+  if (trim(getEnv("VOICEMAN_EMACSPEAK_TTS_SAY_AT_MIN_RATE")) == "1")
+    parser.setTtsSayAtMinRate();
   return readInput(STDIN_FILENO, parser);
 }

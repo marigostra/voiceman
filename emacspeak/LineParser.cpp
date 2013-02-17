@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2012 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or
@@ -175,9 +175,13 @@ void LineParser::tts_say(const std::string& s)
 	} //dectalk commands processing;
     } //while(s[i]);
   m_connection.stop();
-  m_connection.rate(0);
-  m_connection.text(text);
-  m_connection.rate(m_rate);
+  if (m_ttsSayAtMinRate)
+    {
+      m_connection.rate(0);
+      m_connection.text(text);
+      m_connection.rate(m_rate);
+    } else
+    m_connection.text(text);
 }
 
 void LineParser::tts_set_speech_rate(const std::string& s)

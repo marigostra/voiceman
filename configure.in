@@ -1,5 +1,5 @@
 
-AC_INIT(voiceman, 1.5.0.2, msp@altlinux.org)
+AC_INIT(voiceman, 1.5.0.3, msp@altlinux.org)
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall foreign])
 
@@ -64,3 +64,5 @@ AC_CONFIG_FILES([
 ])
 
 AC_OUTPUT(voiceman.conf)
+
+AC_CHECK_LIB(ao, ao_initialize, [], [echo;echo Your system has no libao library needed for proper VoiceMan work! >&2;exit 1])
