@@ -53,10 +53,10 @@ double TextParam::getValue(double min, double aver, double max) const
 
 const TextParam& TextParam::operator +=(size_t step)
 {
-  const size_t oldValue = m_value;
-  m_value += step;
-  if (m_value < oldValue)
+  if (step >= 100 || m_value + step >= 100)
     m_value = 100;
+  else
+    m_value += step;
   return *this;
 }
 
