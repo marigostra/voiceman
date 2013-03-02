@@ -636,41 +636,34 @@ public:
    */
   void processClientData(Client& client, const std::string& data)
   {
-    std::wstring text = readUTF8(data);
-    std::wstring::size_type offset = 0;
-    for(std::wstring::size_type i = 0;i < text.size();i++)
-      if (text[i] != '\r')
-	{
-	  if (offset > 0)
-	    text[i - offset] = text[i];
-	} else
-	offset++;
-    assert(offset <= text.size());
-    text.resize(text.size() - offset);
-    std::wstring buf = client.chain;
-    buf.reserve(buf.length() + text.length());
-    for(std::wstring::size_type i = 0;i < text.length();i++)
+    std::string& buf = client.buf;
+    buf.reserve(m_maxInputLine);
+
+    for (std::string::size_type i = 0; i < data.length(); i++)
       {
-	if (text[i] == '\n')
+	char ch = data[i];
+	if (ch == '\r') continue;
+	if (ch == '\n')
 	  {
 	    if (!client.rejecting)
-	      m_protocol.process(buf, client);
+	      m_protocol.process(readUTF8(buf), client);
 	    client.rejecting = 0;
 	    buf.clear();
 	    continue;
 	  } //'\n';
 	if (client.rejecting)
 	  continue;
-	buf += text[i];
-	if (m_maxInputLine > 0 && buf.length() > m_maxInputLine )
+	buf += ch;
+	if (m_maxInputLine > 0 && buf.length() >= m_maxInputLine )
 	  {
-	    logMsg(LOG_DEBUG, "Input line exceeds input line length limit. Truncating...");
+	    logMsg(LOG_DEBUG, "Input line exceeds input line length limit "
+		   "%u bytes. Truncating...", (unsigned)m_maxInputLine);
 	    client.rejecting = 1;
-	    m_protocol.process(buf, client);
+	    m_protocol.process(readUTF8(buf), client);
 	    buf.clear();
 	  }
       } //for();
-    client.chain = buf;
+    logMsg(LOG_DEBUG, "Stored %u bytes in buffer", (unsigned)buf.length());
   }
 
 private:

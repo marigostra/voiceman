@@ -47,8 +47,8 @@ public:
   virtual ~Client() {}
 
 public:
-  /**\brief The chain of received incomplete data*/
-  std::wstring chain;
+  /**\brief The buffer with received incomplete data */
+  std::string buf;
 
   /**\brief The current volume value associated with the connection*/
   TextParam volume;
