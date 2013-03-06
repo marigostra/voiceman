@@ -89,7 +89,7 @@ void initConfigData(Configuration& c)
   c.useInetSocket = 0;
   c.inetSocketPort = VOICEMAN_DEFAULT_PORT;
   c.maxClients = 16;
-  c.maxInputLine = 1024;
+  c.maxInputLine = 2048;
   c.maxQueueSize = 128;
   c.digitsMode = DigitsModeNormal;
   c.separation = 1;
