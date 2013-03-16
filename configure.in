@@ -1,5 +1,5 @@
 
-AC_INIT(voiceman, 1.5.0.3, msp@altlinux.org)
+AC_INIT(voiceman, 1.5.1, msp@altlinux.org)
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall foreign])
 
@@ -38,8 +38,8 @@ fi
 AC_SUBST(VOICEMAN_INCLUDES, '-I$(top_srcdir)/utils -I$(top_srcdir)/executors')
 AC_SUBST(VOICEMAN_DAEMON_INCLUDES, '$(VOICEMAN_INCLUDES) -I$(top_srcdir)/daemon')
 
-AC_SUBST(VOICEMAN_CFLAGS, '-Wall -pedantic -fpic -DVOICEMAN_DATADIR=\"$(pkgdatadir)\" -DVOICEMAN_DEFAULT_EXECUTOR=\"$(bindir)/$(default_executor)\" -DVOICEMAN_DEFAULT_SOCKET=\"$(default_socket)\" -DVOICEMAN_DEFAULT_PORT=$(default_port)')
-AC_SUBST(VOICEMAN_CXXFLAGS, '-Wall -pedantic -fpic -fno-rtti  -DVOICEMAN_DATADIR=\"$(pkgdatadir)\" -DVOICEMAN_DEFAULT_EXECUTOR=\"$(bindir)/$(default_executor)\" -DVOICEMAN_DEFAULT_SOCKET=\"$(default_socket)\" -DVOICEMAN_DEFAULT_PORT=$(default_port)')
+AC_SUBST(VOICEMAN_CFLAGS, '-Wall -pedantic -fpic -DNDEBUG -DVOICEMAN_DATADIR=\"$(pkgdatadir)\" -DVOICEMAN_DEFAULT_EXECUTOR=\"$(bindir)/$(default_executor)\" -DVOICEMAN_DEFAULT_SOCKET=\"$(default_socket)\" -DVOICEMAN_DEFAULT_PORT=$(default_port)')
+AC_SUBST(VOICEMAN_CXXFLAGS, '-Wall -pedantic -fpic -fno-rtti  -DNDEBUG -DVOICEMAN_DATADIR=\"$(pkgdatadir)\" -DVOICEMAN_DEFAULT_EXECUTOR=\"$(bindir)/$(default_executor)\" -DVOICEMAN_DEFAULT_SOCKET=\"$(default_socket)\" -DVOICEMAN_DEFAULT_PORT=$(default_port)')
 
 AC_SUBST(VOICEMAN_DAEMON_CFLAGS, '$(VOICEMAN_CFLAGS) -DVOICEMAN_DEFAULT_CONFIG=\"$(sysconfdir)/voiceman.conf\"')
 AC_SUBST(VOICEMAN_DAEMON_CXXFLAGS, '$(VOICEMAN_CXXFLAGS) -DVOICEMAN_DEFAULT_CONFIG=\"$(sysconfdir)/voiceman.conf\"')

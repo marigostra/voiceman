@@ -1,11 +1,12 @@
 VoiceMan change log!
 
+	Version: 1.5.1 (2013-03-16)
 	Bug fixes by Dmitri Paduchikh:
 * integer overflow bug fix in the TextParam class;
 * client data loss caused by improper UTF-8 processing at buffer  bounds is fixed;
 * maximum input line length limit has been relaxed up to 2048.
 
-Version: 1.5.0.3
+Version: 1.5.0.3 (2013-02-17)
 	* The patch by Dmitri Paduchikh  to reduce letters processing rate.
 	* The patch by Dmitri Paduchikh  to fix line breaks processing in emacspeak protocol.
 	* Configuration file parameter "letters at min rate in [Global]" section added.
