@@ -17,10 +17,18 @@
 #include<stdlib.h>
 #include<math.h>
 #include<strings.h>
+#include<string.h>
 #include<ao/ao.h>
+
+#define VOICEMAN_LIBAO_DRIVER "VOICEMAN_LIBAO_DRIVER"
+
+static char* libAoDriver = NULL;
 
 void toneInit()
 {
+  libAoDriver = getenv(VOICEMAN_LIBAO_DRIVER);
+  if (libAoDriver != NULL && strlen(libAoDriver) < 1)
+    libAoDriver = NULL;
   ao_initialize();
 }
 
@@ -33,7 +41,7 @@ void playTone(size_t fr, size_t lengthMs)
 {
   ao_device *device = NULL;
   ao_sample_format format;
-  int default_driver;
+  int driver;
   float freq=fr;
   size_t bufSize = 0;
   char* buffer = NULL;
@@ -41,13 +49,13 @@ void playTone(size_t fr, size_t lengthMs)
   size_t i;
   assert(fr >= 0 && lengthMs >= 10);
   bzero(&format, sizeof(ao_sample_format));
-  default_driver = ao_default_driver_id();
+  driver = libAoDriver != NULL?ao_driver_id(libAoDriver):ao_default_driver_id();
   format.bits = 16;
   format.channels = 2;
   format.rate = 44100;
   format.byte_format = AO_FMT_LITTLE;
   samplesToPlay = format.rate*lengthMs/1000;
-  device = ao_open_live(default_driver, &format, NULL);
+  device = ao_open_live(driver, &format, NULL);
   if (device == NULL) 
     {
       ao_shutdown();
