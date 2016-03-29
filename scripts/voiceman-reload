@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # Sends a signal to VoiceMan daemon with notification to reload its configuration;
-# Michael Pozhidaev <msp@altlinux.org>
+# Michael Pozhidaev <michael.pozhidaev@gmail.com>
 
 THIS="${0##*/}"
 
