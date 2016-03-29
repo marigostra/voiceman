@@ -1,122 +1,26 @@
 
-  The VoiceMan speech service readme file
-  Michael Pozhidaev <msp@altlinux.org>
-  Date: 2010-05-31
+The VoiceMan readme
 
-  What is VoiceMan?
+VoiceMan is a lightweight speech processing daemon for GNU/Linux
+(maybe for other UNIXes as well, but this didn't tested). Lightweight
+there means that VoiceMan generally doesn't take care about any audio
+signal processing, it just takes commands to speak and launches
+corresponding speech synthesizers as external programs, giving them
+data on stdin. Meantime, VoiceMan has some features for text
+processing.
 
-VoiceMan is the speech processing daemon designed to collect output
-from screen reading software used by blind users in one central place
-and translate it into speech with configured set of speech
-synthesizers. Developing process was launched in 2003. The general
-idea at the initial stage was creation flexible tool for automatic
-switching between Russian and English TTSes based on cyrillic
-character sequences analyzing. During the developing process goals
-were extended and some new features were included like configuration
-simplification, voice family switching and some general text
-preprocessing. There is quick overview of current VoiceMan features:
+At the current moment, VoiceMan is a part of the LUWRAIN project
+(http://luwrain.org), because it is used as a main speech processing
+platform in LUWRAIN bootable images. VoiceMan has the emacspeak
+client, so it can be used for processing output from emacspeak and
+yasr. Unfortunately, VoiceMan doesn't suit for using with Orca as Orca
+doesn't have support of emacspeak protocol any more.
 
-- UNICODE text processing;
+I'm thinking about writing VoiceMan 2.0 with D-Bus support but due to
+lack of spare time it's very difficult to say when it could be
+released.
 
-- the single configuration file (with feature be collected from
-  parts);
+See updates on http://marigostra.com/projects/voiceman/
 
-- hot configuration reloading;
-
-- different voice families support for each language to implement
-  semantic marks; it allows speak differently hyperlinks, window
-  titles, system notifications etc.
-
-At the current moment VoiceMan daemon is used as main speech
-processing service in ALT LInux Homeros project which aims be
-GNU/Linux distribution for Russian blind and visual-impaired users. It
-collects all output from screen readers such as emacspeak, orca and
-yasr and prevents speech overlapping in case of concurrent using more
-than one screen reader copy.
-
-  Important design details
-
-The main tenet respected in VoiceMan developing is select solution as
-simple as it possible. It has some disadvantages (see "Disadvantages"
-section below) but it helps create stable and low-latency
-application. Here are some important solutions.
-
-The VoiceMan daemon consists of two big parts: general server and
-executor process. General server accepts connections, loads
-configuration data, performs text processing, resolves speech
-overlapping if two part of text were received from different
-clients. It produces the sequence of commands forwarded to executor
-process (see executors/executorCommandHeader.h for command format
-description). The executor is external executable, its main purpose is
-to run speech synthesizers, play sound and send required callback back
-to main server. Two important things must be mentioned: executor
-process may have several implementations and user can choose the best
-one with configuration file option or command line argument. For
-example, now we have default executor which uses external players to
-play sound such as aplay or pacat, but it is possible to create new
-implementations to use direct Pulse Audio API if necessary and so
-on. The second important thing related to executor process is the
-ability to be run on other machine via ssh. It is main reason against
-executor implementation as shared library. Executor works strongly
-sequentially and can handle only one speech flow. All conflicts
-between different clients must be resolved by general server before
-translating data into executor.
-
-VoiceMan uses very simple communication protocol (see
-voiceman-protocol.txt file in doc directory). Currently it covers only
-just strongly required features and must be extended later (see
-"Disadvantages" section). Maximum simplification is very important due
-to performance consequences and optimizations.
-
-  Disadvantages
-
-Current version of Voiceman has clear structure, good daemon API
-documentation, it is stable and fast but has some disadvantages. The
-problem is not there is no solution or it is unknown, instead, there
-are too many ways to solve each disadvantage and author has doubts
-which one is the best and safe for current clear structure. All ideas
-will be appreciated and everybody are welcome to discuss them using
-msp@altlinux.org mail.
-
-VoiceMan runs speech synthesizers and players as external programs by
-specifying corresponding command lines in configuration file. It is
-highly flexible approach but it has obvious disadvantages. Use direct
-API for sound systems allows explicit signal sending to stop
-playback. By current experience there are no problems with using aplay
-to interrupt speech, but some other utilities (pacat, for example) may
-cause problems. It is not tested enough to make a decision what to
-do. In any case there is possibility to create one more executor
-implementation to solve this as is was mentioned above. The other
-problem is related with handling signals what part of text was spoken
-and sending corresponding notifications to clients. Currently two
-widely used in Russia speech synthesizers - mbrola and ru_tts have not
-features to mark output at all, so it can be an explanation why this
-question is not solved, but it is the real subject to discuss. This
-trouble can be also solved by patching executor process.
-
-Current version of VoiceMan receives notifications from executor when
-there are no playback and user hear silence, but even this
-notification is not sent to clients. It is one more subject to discuss
-how such events must be translated to clients safely for current
-performance and how client API must reflect it.
-
-VoiceMan has only two clients now: simple shell client for testing and
-debugging and the client to be used with emacspeak. Orca can be used
-with emacspeak client too but it is necessary to create native
-translations of speech data from Orca into VoiceMan. 
-
-  Why not Speech Dispatcher or OpenTTS?
-
-Great respect to spd and opentts authors! It is not the question "Why
-not?"  at all, because at the main original idea of VoiceMan was the
-implementation of automatic switching for Russian and English
-languages. All other features like unique configuration of speech
-output for all screen readers were just the consequences of VoiceMan
-evolution. So there is only just historical explanation why VoiceMan
-exists with Speech Dispatcher and OpenTTS at the same time and
-partially overlapps their features. 
-
-With best wishes, 
-Michael Pozhidaev. 
-Tomsk, Russia. 
-The ALT Linux Homeros Project.
+Michael Pozhidaev <michael.pozhidaev@gmail.com> 
+March 29, 2016
