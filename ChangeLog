@@ -1,5 +1,8 @@
 VoiceMan change log!
 
+		Version: 1.5.2 (2016-03-29)
+	* Environment variable VOICEMAN_LIBAO_DRIVER added
+
 	Version: 1.5.1 (2013-03-16)
 	Bug fixes by Dmitri Paduchikh:
 * integer overflow bug fix in the TextParam class;

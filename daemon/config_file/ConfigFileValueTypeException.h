@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2000-2013 Michael Pozhidaev<msp@altlinux.org>
+	Copyright (c) 2000-2016 Michael Pozhidaev<michael.pozhidaev@gmail.com>
    This file is part of the VoiceMan speech service.
 
    VoiceMan speech service is free software; you can redistribute it and/or

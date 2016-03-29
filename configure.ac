@@ -13,6 +13,7 @@ fi
 
 AC_PROG_CC
 AC_PROG_CXX
+AM_PROG_AR
 AC_PROG_RANLIB
 
 # Define some parameters to adjust Voiceman's default settings
