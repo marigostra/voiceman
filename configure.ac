@@ -1,5 +1,5 @@
 
-AC_INIT(voiceman, 1.5.1, msp@altlinux.org)
+AC_INIT(voiceman, 1.5.2, michael.pozhidaev@gmail.com)
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall foreign])
 
