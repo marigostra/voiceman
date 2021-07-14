@@ -1,0 +1,11 @@
+voiceman (1.5.2-lwr1) unstable; urgency=low
+
+  New version
+
+ -- Michael Pozhidaev <michael.pozhidaev@gmail.com>  Wed, 30 Mar 2016 00:07:59 +0000
+
+voiceman (1.5.1-lwr1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Michael Pozhidaev <michael.pozhidaev@gmail.com>  Fri, 06 Nov 2015 21:36:59 +0000

@@ -1,0 +1,15 @@
+Source: voiceman
+Section: unknown
+Priority: optional
+Maintainer: Michael Pozhidaev <michael.pozhidaev@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libao-dev
+Standards-Version: 3.9.4
+Homepage: http://marigostra.com/projects/voiceman/
+
+Package: voiceman
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Lightweight server for processing speech output
+  VoiceMan is a speech processing daemon designed to collect output
+  from screen reading software used by blind people in one common place
+  and forward it to speech synthesizer.
