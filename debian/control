@@ -1,10 +1,10 @@
 Source: voiceman
 Section: unknown
 Priority: optional
-Maintainer: Michael Pozhidaev <michael.pozhidaev@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, libao-dev
+Maintainer: Michael Pozhidaev <msp@luwrain.org>
+Build-Depends: debhelper (>= 8.0.0), dh-autoreconf, autotools-dev, libao-dev
 Standards-Version: 3.9.4
-Homepage: http://marigostra.com/projects/voiceman/
+Homepage: https://marigostra.com/projects/voiceman/
 
 Package: voiceman
 Architecture: any

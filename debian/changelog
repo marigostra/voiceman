@@ -1,8 +1,8 @@
-voiceman (1.5.2-lwr1) unstable; urgency=low
+voiceman (1.5.2-lwr1) stable; urgency=low
 
   New version
 
- -- Michael Pozhidaev <michael.pozhidaev@gmail.com>  Wed, 30 Mar 2016 00:07:59 +0000
+ -- Michael Pozhidaev <msp@luwrain.org>  Wed, 30 Mar 2016 00:07:59 +0000
 
 voiceman (1.5.1-lwr1) unstable; urgency=low
 
